@@ -1,0 +1,10 @@
+<svg width="1440" height="1024" viewBox="0 0 1440 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="1440" height="1024" fill="#F8FAFC"/>
+<rect x="120" y="120" width="1200" height="784" rx="32" fill="white"/>
+<text x="50%" y="200" text-anchor="middle" font-size="48" font-family="Inter, sans-serif" fill="#020817">Hi, I’m Christina</text>
+<text x="50%" y="260" text-anchor="middle" font-size="24" font-family="Inter, sans-serif" fill="#334155">Frontend Developer & UI Enthusiast</text>
+<rect x="620" y="320" width="200" height="200" rx="100" fill="#E0E7EF"/>
+<text x="50%" y="570" text-anchor="middle" font-size="20" font-family="Inter, sans-serif" fill="#64748B">I build beautiful, accessible, and performant web experiences.</text>
+<rect x="620" y="620" width="200" height="56" rx="28" fill="#2563EB"/>
+<text x="50%" y="655" text-anchor="middle" font-size="20" font-family="Inter, sans-serif" fill="white">Contact Me</text>
+</svg>
