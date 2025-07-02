@@ -1,39 +1,44 @@
 export default function App() {
   return (
-    <div className="bg-slate-50 min-h-screen flex flex-col">
+    <div className="bg-black min-h-screen flex flex-col transition-all snap-y snap-mandatory overflow-y-auto h-screen">
       {/* Navbar */}
-      <header className="w-full bg-white border-b border-slate-200 sticky top-0 z-10">
+      <header className="w-full bg-black border-b border-black sticky top-0 z-10">
         <nav className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
-          <div className="font-bold text-xl">Logo</div>
-          <ul className="hidden md:flex gap-8 text-slate-700 font-medium">
-            <li><a href="#home" className="hover:text-blue-600">Home</a></li>
-            <li><a href="#about" className="hover:text-blue-600">About</a></li>
-            <li><a href="#services" className="hover:text-blue-600">Services</a></li>
-            <li><a href="#portfolio" className="hover:text-blue-600">Portfolio</a></li>
-            <li><a href="#contact" className="hover:text-blue-600">Contact</a></li>
+          <div className="font-bold text-white text-xl">Logo</div>
+          <ul className="hidden md:flex gap-8 text-white font-[Poppins] font-medium">
+            <li><a href="#home" className="hover:text-slate-400">Home</a></li>
+            <li><a href="#about" className="hover:text-slate-400">About Us</a></li>
+            <li><a href="#services" className="hover:text-slate-400">Services</a></li>
+            <li><a href="#portfolio" className="hover:text-slate-400">Portfolio</a></li>
           </ul>
-          <button className="ml-6 px-6 py-2 h-11 rounded-md bg-blue-600 text-white font-medium hover:bg-blue-700 transition">Get Started</button>
+          <button className="font-[Poppins] ml-8 px-6 py-2 h-11 rounded-xl bg-white text-black font-medium hover:border-1 hover:border-white hover:text-white hover:bg-black transition">Get Started</button>
         </nav>
       </header>
 
       {/* Hero Section */}
-      <section className="w-full bg-white border-b border-slate-200">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-8 px-6 py-16">
-          <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=800&q=80" alt="Hero" className="w-full md:w-1/2 rounded-2xl object-cover h-80 md:h-[400px]" />
-          <div className="flex-1 flex flex-col items-start gap-6">
-            <h1 className="text-3xl md:text-4xl font-bold text-slate-900">Transforming Ideas into Stunning Visual Experiences</h1>
-            <p className="text-slate-600 max-w-lg">At Eagles Creative, we deliver multimedia solutions to achieve exceptional outcomes. Our team blends creativity, technology, and strategy to bring your vision to life.</p>
-            <div className="flex gap-4">
-              <button className="px-6 py-2 h-11 rounded-md bg-blue-600 text-white font-medium hover:bg-blue-700 transition">Get Started</button>
-              <button className="px-6 py-2 h-11 rounded-md border border-blue-600 text-blue-600 bg-white font-medium hover:bg-blue-50 transition">Learn More</button>
+      <section className="w-full bg-black border-b border-slate-200 h-screen transition-all snap-start" id="home">
+        <div className="mx-auto items-center ">
+          <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=800&q=80" alt="Hero" className="w-full  object-cover h-150 " />
+          
+        </div>
+        <div className="flex-2 flex flex-nowrap flex-row items-center gap-8 mt-4">
+            <div className=" p-10 mt-3 mb-4 items-center max-w-1/2">
+            <h1 className="text-6xl font-thin text-white font-[Poppins]">Transforming Ideas into Stunning Visual Experiences</h1>
+            </div>
+
+            <div className="flex flex-col mt-3 pb-12 pt-2 items-start gap-12 max-w-1/2">
+            <p className="text-white text-lg">At Eagleies Creative, we deliver multimedia solutions to achieve exceptional outcomes. Our team blends creativity, technology, and strategy to bring your vision to life.</p>
+            <div className="flex gap-4 items-start">
+              <button className="px-6 py-2 h-11 rounded-xl bg-white text-black font-medium hover:bg-blue-700 transition">Get Started</button>
+              <button className="px-6 py-2 h-11 rounded-xl border border-white text-white bg-black font-medium hover:bg-blue-50 transition">Learn More</button>
+            </div>
             </div>
           </div>
-        </div>
       </section>
 
       {/* Services Overview */}
-      <section className="w-full bg-white border-b border-slate-200 py-12">
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="w-full bg-[#F5F5F5] border-b border-slate-200 py-12 h-screen snap-start" id="services">
+        <div className="max-w-7xl mx-auto px-6 h-screen">
           <h2 className="text-2xl font-semibold text-center mb-10">Explore Our Core Services That Elevate Your Business to New Heights</h2>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="flex flex-col items-center text-center gap-4">
@@ -59,8 +64,8 @@ export default function App() {
       </section>
 
       {/* Services Detailed */}
-      <section className="w-full bg-slate-900 py-16">
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="w-full bg-slate-900 py-16 h-screen snap-start">
+        <div className=" mx-auto px-6">
           <h2 className="text-2xl font-semibold text-white mb-10">Explore Our Comprehensive Service Offerings</h2>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="flex flex-col gap-2">
@@ -81,7 +86,7 @@ export default function App() {
       </section>
 
       {/* Portfolio Section */}
-      <section className="w-full bg-white py-16" id="portfolio">
+      <section className="w-full bg-white py-16 h-screen snap-start" id="portfolio">
         <div className="max-w-7xl mx-auto px-6">
           <h2 className="text-2xl font-semibold text-center mb-10">Our Recent Projects</h2>
           <div className="grid md:grid-cols-2 gap-8">
@@ -116,7 +121,7 @@ export default function App() {
       </section>
 
       {/* Advantages Section */}
-      <section className="w-full bg-white py-16">
+      <section className="w-full bg-white py-16 h-screen snap-start">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row gap-12 items-center">
           <div className="flex-1 flex flex-col gap-6">
             <h2 className="text-2xl font-semibold">Discover the key advantages of partnering with Eagles Creative for your projects.</h2>
@@ -130,7 +135,7 @@ export default function App() {
       </section>
 
       {/* Testimonial Section */}
-      <section className="w-full bg-slate-800 py-16">
+      <section className="w-full bg-slate-800 py-16 h-screen snap-start">
         <div className="max-w-3xl mx-auto px-6 text-center text-white">
           <div className="text-3xl mb-4">★★★★★</div>
           <blockquote className="italic mb-4">Taglines Creative transformed our vision into reality. Their attention to detail and knowledge surpasses our expectations!</blockquote>
@@ -142,7 +147,7 @@ export default function App() {
       </section>
 
       {/* CTA Section */}
-      <section className="w-full bg-gradient-to-b from-slate-800 to-slate-400 py-16">
+      <section className="w-full bg-gradient-to-b from-slate-800 to-slate-400 py-16 h-screen snap-start">
         <div className="max-w-7xl mx-auto px-6 text-center text-white">
           <h2 className="text-2xl font-semibold mb-4">Let's Create Something Amazing</h2>
           <p className="mb-6">Contact us to discuss your project and discover how we can bring your ideas to life.</p>
@@ -151,7 +156,7 @@ export default function App() {
       </section>
 
       {/* Contact Section */}
-      <section className="w-full bg-white py-16" id="contact">
+      <section className="w-full bg-white py-16 h-screen snap-start" id="contact">
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12">
           <div>
             <h2 className="text-2xl font-semibold mb-4">Get in Touch</h2>
@@ -176,7 +181,7 @@ export default function App() {
       </section>
 
       {/* Map Section */}
-      <section className="w-full bg-white py-8">
+      <section className="w-full bg-white py-8 h-screen snap-start">
         <div className="max-w-7xl mx-auto px-6">
           <div className="bg-slate-200 rounded-xl h-64 flex items-center justify-center">
             <span className="text-slate-400 text-4xl">📍</span>
