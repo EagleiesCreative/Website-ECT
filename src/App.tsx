@@ -1,8 +1,20 @@
 export default function App() {
   return (
-    <div className="bg-black min-h-screen flex flex-col transition-all snap-y snap-mandatory overflow-y-auto h-screen">
+    <div className="bg-[#02172a] min-h-screen flex flex-col transition-all snap-y snap-mandatory overflow-y-auto h-screen relative">
+      {/* Grainy SVG Texture Overlay */}
+      <svg className="pointer-events-none fixed inset-0 w-full h-full z-0" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+        <filter id="grain">
+          <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="4" stitchTiles="stitch"/>
+          <feColorMatrix type="saturate" values="0"/>
+          <feComponentTransfer>
+            <feFuncA type="linear" slope="0.15"/>
+          </feComponentTransfer>
+        </filter>
+        <rect width="100%" height="100%" filter="url(#grain)" fill="#000" fillOpacity="0.08"/>
+      </svg>
+
       {/* Navbar */}
-      <header className="w-full bg-black border-b border-black sticky top-0 z-10">
+      <header className="w-full bg-[#020e2c] border-b border-[#020e2c] sticky top-0 z-10">
         <nav className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
           <div className="font-bold text-white text-xl">Logo</div>
           <ul className="hidden md:flex gap-8 text-white font-[Poppins] font-medium">
@@ -16,28 +28,26 @@ export default function App() {
       </header>
 
       {/* Hero Section */}
-      <section className="w-full bg-black border-b border-slate-200 h-screen transition-all snap-start" id="home">
-        <div className="mx-auto items-center ">
-          <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=800&q=80" alt="Hero" className="w-full  object-cover h-150 " />
-          
-        </div>
-        <div className="flex-2 flex flex-nowrap flex-row items-center gap-8 mt-4">
-            <div className=" p-10 mt-3 mb-4 items-center max-w-1/2">
-            <h1 className="text-6xl font-thin text-white font-[Poppins]">Transforming Ideas into Stunning Visual Experiences</h1>
-            </div>
+      <section className="w-full bg-[#020e2c]  h-screen transition-all snap-start" id="home">
+        <div className="flex-2 flex flex-nowrap flex-row items-center gap-8 mt-4 py-36 h-screen relative">
+          {/* Radial gradient background behind h1 */}
+          <div className="circlePosition bg-[#104370] rounded-[100%] absolute left-[100px] top-1/2 -translate-y-1/2 z-0 w-[700px] h-[300px] blur-[90px] pointer-events-none">
 
-            <div className="flex flex-col mt-3 pb-12 pt-2 items-start gap-12 max-w-1/2">
-            <p className="text-white text-lg">At Eagleies Creative, we deliver multimedia solutions to achieve exceptional outcomes. Our team blends creativity, technology, and strategy to bring your vision to life.</p>
+</div>
+          <div className="relative p-10 mt-3 mb-4 items-center max-w-1/2 z-10">
+            <h1 className="text-6xl font-thin text-white font-[Poppins]">Transforming Ideas into Stunning Visual Experiences</h1>
+          </div>
+          <div className="flex flex-col mt-3 pb-12 pt-2 items-start gap-12 max-w-1/2 z-10">
+            <p className="text-white font-[Poppins] font-thin text-lg">At Eagleies Creative, we deliver multimedia solutions to achieve exceptional outcomes. Our team blends creativity, technology, and strategy to bring your vision to life.</p>
             <div className="flex gap-4 items-start">
               <button className="px-6 py-2 h-11 rounded-xl bg-white text-black font-medium hover:bg-blue-700 transition">Get Started</button>
-              <button className="px-6 py-2 h-11 rounded-xl border border-white text-white bg-black font-medium hover:bg-blue-50 transition">Learn More</button>
-            </div>
             </div>
           </div>
+        </div>
       </section>
 
       {/* Services Overview */}
-      <section className="w-full bg-[#F5F5F5] border-b border-slate-200 py-12 h-screen snap-start" id="services">
+      <section className="w-full bg-[#020e2c] border-b border-slate-200 py-12 h-screen snap-start" id="services">
         <div className="max-w-7xl mx-auto px-6 h-screen">
           <h2 className="text-2xl font-semibold text-center mb-10">Explore Our Core Services That Elevate Your Business to New Heights</h2>
           <div className="grid md:grid-cols-3 gap-8">
@@ -64,7 +74,7 @@ export default function App() {
       </section>
 
       {/* Services Detailed */}
-      <section className="w-full bg-slate-900 py-16 h-screen snap-start">
+      <section className="w-full bg-[#020e2c] py-16 h-screen snap-start">
         <div className=" mx-auto px-6">
           <h2 className="text-2xl font-semibold text-white mb-10">Explore Our Comprehensive Service Offerings</h2>
           <div className="grid md:grid-cols-3 gap-8">
