@@ -1,10 +1,47 @@
+import { useEffect, useRef } from "react";
+
 export default function App() {
+  const heroRef = useRef<HTMLDivElement | null>(null);
+  const navbarRef = useRef<HTMLDivElement | null>(null); // Use a ref for the navbar too
+
+  useEffect(() => {
+    const navbar = navbarRef.current; // Get the navbar from its ref
+    const heroSection = heroRef.current; // Get the hero section from its ref
+
+    const handleScroll = () => {
+      if (!navbar || !heroSection) return;
+
+      // Calculate the point where the navbar should change.
+      // This is the bottom of the hero section relative to the top of the document.
+      // We add a small offset (e.g., 20px) to make the transition feel smoother
+      // or to ensure it changes right after the hero section is left.
+      const heroBottomOffset = heroSection.offsetTop + heroSection.offsetHeight;
+      const scrollThreshold = heroBottomOffset - navbar.offsetHeight - 1; // Adjust based on navbar height, and slightly before it leaves the screen
+
+      // When the user has scrolled past the bottom of the hero section
+      if (window.scrollY > scrollThreshold) {
+        navbar.classList.remove('bg-transparent', 'border-transparent');
+        navbar.classList.add('!bg-[#020e2c]', '!border-[#020e2c]');
+      } else {
+        // When the user is at the top or still within the hero section
+        navbar.classList.add('bg-transparent', 'border-transparent');
+        navbar.classList.remove('!bg-[#020e2c]', '!border-[#020e2c]');
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Ensure correct state on mount (e.g., if page loads scrolled)
+
+    // Clean up the event listener when the component unmounts
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []); // Empty dependency array means this effect runs once on mount and cleans up on unmount
+
   return (
     <div className="bg-[#02172a] min-h-screen flex flex-col transition-all snap-y snap-mandatory overflow-y-auto h-screen relative">
       {/* Grainy SVG Texture Overlay */}
       <svg className="pointer-events-none fixed inset-0 w-full h-full z-0" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
         <filter id="grain">
-          <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="4" stitchTiles="stitch"/>
+          <feTurbulence type="fractalNoise" baseFrequency="0.55" numOctaves="4" stitchTiles="stitch"/>
           <feColorMatrix type="saturate" values="0"/>
           <feComponentTransfer>
             <feFuncA type="linear" slope="0.15"/>
@@ -13,8 +50,8 @@ export default function App() {
         <rect width="100%" height="100%" filter="url(#grain)" fill="#000" fillOpacity="0.08"/>
       </svg>
 
-      {/* Navbar */}
-      <header className="w-full bg-[#020e2c] border-b border-[#020e2c] sticky top-0 z-10">
+      {/* Navbar - Pass the ref here */}
+      <header id="navbar" ref={navbarRef} className="w-full bg-transparent border-b border-transparent sticky top-0 z-30 transition-colors duration-300">
         <nav className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
           <div className="font-bold text-white text-xl">Logo</div>
           <ul className="hidden md:flex gap-8 text-white font-[Poppins] font-medium">
@@ -28,46 +65,66 @@ export default function App() {
       </header>
 
       {/* Hero Section */}
-      <section className="w-full bg-[#020e2c]  h-screen transition-all snap-start" id="home">
-        <div className="flex-2 flex flex-nowrap flex-row items-center gap-8 mt-4 py-36 h-screen relative">
-          {/* Radial gradient background behind h1 */}
-          <div className="circlePosition bg-[#104370] rounded-[100%] absolute left-[100px] top-1/2 -translate-y-1/2 z-0 w-[700px] h-[300px] blur-[90px] pointer-events-none">
+      <section ref={heroRef} className="w-full bg-[#020e2c] h-screen transition-all snap-start" id="home">
+        {/* Radial Glow Section */}
+        {/* Radial gradient background behind h1 */}
+        <div className="circlePosition bg-[#104370] rounded-[100%] absolute left-[100px] top-1/2 -translate-y-1/2 z-0 w-[700px] h-[300px] blur-[90px] pointer-events-none">
+        </div>
+        {/* Radial gradient background behind nav */}
+        <div className="circlePosition bg-[#030b1a] rounded-[100%] absolute left-[0px] top-[20px] -translate-y-1/2 z-0 w-[800px] h-[300px] blur-[90px] pointer-events-none">
+        </div>
+        {/* Radial gradient background behind nav */}
+        <div className="circlePosition bg-[#104370] rounded-[100%] absolute right-[-200px] top-[800px] -translate-y-1/2 z-0 w-[800px] h-[400px] blur-[90px] pointer-events-none">
+        </div>
+        {/* Radial gradient background behind nav */}
+        <div className="circlePosition bg-[#0d3d52] rounded-[100%] absolute right-[-400px] top-[200px] -translate-y-1/2 z-0 w-[800px] h-[300px] blur-[90px] pointer-events-none">
+        </div>
 
-</div>
-          <div className="relative p-10 mt-3 mb-4 items-center max-w-1/2 z-10">
-            <h1 className="text-6xl font-thin text-white font-[Poppins]">Transforming Ideas into Stunning Visual Experiences</h1>
+      
+        <div className="flex-2 flex flex-nowrap flex-col items-center gap-0 mt-26 py-36 h-screen relative">
+          {/* Heading Section H1 */}
+          <div className="flex flex-row flex-nowrap ">
+          <div className="relative px-16 p-10 ml-28 mt-3 mb-4 items-center max-w-2/3 z-10 ">
+            <h1 className="text-7xl font-thin text-white font-[Poppins]">Transforming Ideas into Stunning Visual Experiences.</h1>
           </div>
-          <div className="flex flex-col mt-3 pb-12 pt-2 items-start gap-12 max-w-1/2 z-10">
-            <p className="text-white font-[Poppins] font-thin text-lg">At Eagleies Creative, we deliver multimedia solutions to achieve exceptional outcomes. Our team blends creativity, technology, and strategy to bring your vision to life.</p>
-            <div className="flex gap-4 items-start">
-              <button className="px-6 py-2 h-11 rounded-xl bg-white text-black font-medium hover:bg-blue-700 transition">Get Started</button>
+          </div>
+          {/* Heading Section H1 */}
+          <div className="flex flex-row flex-nowrap">
+            <div className="w-2/3"></div>
+          <div className="flex flex-col mt-3 pr-60 pl-30 pb-12 pt-2 items-start gap-12 max-w-1/2 z-10 ">
+            <p className="text-[#cbd5e1] font-[Poppins] font-thin text-md">At Eagleies Creative, we deliver multimedia solutions to achieve exceptional outcomes. Our team blends creativity, technology, and strategy to bring your vision to life.</p>
+            <div className="flex gap-2 items-start">
+              <button className="px-6   h-10 rounded-2xl border-1 border-white  text-white font-[Poppins] font-extralight transition">Get to know us</button>
+            </div>
             </div>
           </div>
+          
         </div>
+        
       </section>
 
       {/* Services Overview */}
       <section className="w-full bg-[#020e2c] border-b border-slate-200 py-12 h-screen snap-start" id="services">
         <div className="max-w-7xl mx-auto px-6 h-screen">
-          <h2 className="text-2xl font-semibold text-center mb-10">Explore Our Core Services That Elevate Your Business to New Heights</h2>
+          <h2 className="text-2xl font-semibold text-center mb-10 text-white">Explore Our Core Services That Elevate Your Business to New Heights</h2>
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="flex flex-col items-center text-center gap-4">
+            <div className="flex flex-col items-center text-center gap-4 text-white">
               <div className="bg-blue-100 text-blue-600 rounded-full p-4 text-3xl">🎬</div>
               <h3 className="font-bold text-lg">Digital Multimedia Production</h3>
-              <p className="text-slate-600">Transform your vision into reality with our digital multimedia production.</p>
-              <a href="#" className="text-blue-600 font-medium hover:underline">Discover →</a>
+              <p className="text-slate-200">Transform your vision into reality with our digital multimedia production.</p>
+              <a href="#" className="text-blue-400 font-medium hover:underline">Discover →</a>
             </div>
-            <div className="flex flex-col items-center text-center gap-4">
+            <div className="flex flex-col items-center text-center gap-4 text-white">
               <div className="bg-blue-100 text-blue-600 rounded-full p-4 text-3xl">🔗</div>
               <h3 className="font-bold text-lg">System Integration</h3>
-              <p className="text-slate-600">Seamless system integration for enhanced operational efficiency and performance.</p>
-              <a href="#" className="text-blue-600 font-medium hover:underline">Discover →</a>
+              <p className="text-slate-200">Seamless system integration for enhanced operational efficiency and performance.</p>
+              <a href="#" className="text-blue-400 font-medium hover:underline">Discover →</a>
             </div>
-            <div className="flex flex-col items-center text-center gap-4">
+            <div className="flex flex-col items-center text-center gap-4 text-white">
               <div className="bg-blue-100 text-blue-600 rounded-full p-4 text-3xl">💡</div>
               <h3 className="font-bold text-lg">Digital Solutions</h3>
-              <p className="text-slate-600">Innovative digital solutions tailored to your business needs.</p>
-              <a href="#" className="text-blue-600 font-medium hover:underline">Discover →</a>
+              <p className="text-slate-200">Innovative digital solutions tailored to your business needs.</p>
+              <a href="#" className="text-blue-400 font-medium hover:underline">Discover →</a>
             </div>
           </div>
         </div>
@@ -96,9 +153,9 @@ export default function App() {
       </section>
 
       {/* Portfolio Section */}
-      <section className="w-full bg-white py-16 h-screen snap-start" id="portfolio">
+      <section className="w-full bg-[#020e2c] py-16 h-screen snap-start" id="portfolio">
         <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-2xl font-semibold text-center mb-10">Our Recent Projects</h2>
+          <h2 className="text-2xl font-semibold text-center mb-10 text-white">Our Recent Projects</h2>
           <div className="grid md:grid-cols-2 gap-8">
             <div className="bg-slate-100 rounded-xl overflow-hidden">
               <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=800&q=80" alt="Project 1" className="w-full h-64 object-cover" />
@@ -131,11 +188,11 @@ export default function App() {
       </section>
 
       {/* Advantages Section */}
-      <section className="w-full bg-white py-16 h-screen snap-start">
+      <section className="w-full bg-[#020e2c] py-16 h-screen snap-start">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row gap-12 items-center">
           <div className="flex-1 flex flex-col gap-6">
-            <h2 className="text-2xl font-semibold">Discover the key advantages of partnering with Eagles Creative for your projects.</h2>
-            <ul className="list-disc pl-5 text-slate-600">
+            <h2 className="text-2xl font-semibold text-white">Discover the key advantages of partnering with Eagles Creative for your projects.</h2>
+            <ul className="list-disc pl-5 text-slate-300">
               <li>Innovative Solutions</li>
               <li>Customer Focused</li>
             </ul>
@@ -145,7 +202,7 @@ export default function App() {
       </section>
 
       {/* Testimonial Section */}
-      <section className="w-full bg-slate-800 py-16 h-screen snap-start">
+      <section className="w-full bg-[#020e2c] py-16 h-screen snap-start">
         <div className="max-w-3xl mx-auto px-6 text-center text-white">
           <div className="text-3xl mb-4">★★★★★</div>
           <blockquote className="italic mb-4">Taglines Creative transformed our vision into reality. Their attention to detail and knowledge surpasses our expectations!</blockquote>
@@ -157,7 +214,7 @@ export default function App() {
       </section>
 
       {/* CTA Section */}
-      <section className="w-full bg-gradient-to-b from-slate-800 to-slate-400 py-16 h-screen snap-start">
+      <section className="w-full bg-[#020e2c] from-slate-800 to-slate-400 py-16 h-screen snap-start">
         <div className="max-w-7xl mx-auto px-6 text-center text-white">
           <h2 className="text-2xl font-semibold mb-4">Let's Create Something Amazing</h2>
           <p className="mb-6">Contact us to discuss your project and discover how we can bring your ideas to life.</p>
@@ -166,12 +223,12 @@ export default function App() {
       </section>
 
       {/* Contact Section */}
-      <section className="w-full bg-white py-16 h-screen snap-start" id="contact">
+      <section className="w-full bg-[#020e2c] py-16 h-screen snap-start" id="contact">
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12">
           <div>
-            <h2 className="text-2xl font-semibold mb-4">Get in Touch</h2>
-            <p className="mb-6 text-slate-600">We'd love to hear from you! Reach out for inquiries or collaborations.</p>
-            <ul className="space-y-2 text-slate-700">
+            <h2 className="text-2xl font-semibold mb-4 text-white">Get in Touch</h2>
+            <p className="mb-6 text-slate-300">We'd love to hear from you! Reach out for inquiries or collaborations.</p>
+            <ul className="space-y-2 text-slate-300">
               <li><span className="font-medium">Email:</span> info@eaglescreative.com</li>
               <li><span className="font-medium">Phone:</span> (021) 1234 5678</li>
               <li><span className="font-medium">Office:</span> Jl. Creative Lane, Jakarta, Indonesia</li>
@@ -191,7 +248,7 @@ export default function App() {
       </section>
 
       {/* Map Section */}
-      <section className="w-full bg-white py-8 h-screen snap-start">
+      <section className="w-full bg-[#020e2c] py-8 h-screen snap-start">
         <div className="max-w-7xl mx-auto px-6">
           <div className="bg-slate-200 rounded-xl h-64 flex items-center justify-center">
             <span className="text-slate-400 text-4xl">📍</span>
@@ -200,26 +257,26 @@ export default function App() {
       </section>
 
       {/* Footer */}
-      <footer className="w-full bg-white border-t border-slate-200 py-8 mt-auto">
+      <footer className="w-full bg-[#020e2c] border-t border-slate-700 py-8 mt-auto">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="flex flex-col items-center md:items-start gap-2">
-            <div className="font-bold text-xl">Logo</div>
-            <div className="text-slate-500 text-sm">© 2025 Eagles Creative. All rights reserved.</div>
+            <div className="font-bold text-xl text-white">Logo</div>
+            <div className="text-slate-400 text-sm">© 2025 Eagles Creative. All rights reserved.</div>
             <div className="flex gap-2 text-slate-400 text-xl">
-              <a href="#"><span></span></a>
-              <a href="#"><span></span></a>
-              <a href="#"><span></span></a>
-              <a href="#"><span></span></a>
+              <a href="#" className="hover:text-white"><span></span></a> {/* Assuming these are icon placeholders */}
+              <a href="#" className="hover:text-white"><span></span></a>
+              <a href="#" className="hover:text-white"><span></span></a>
+              <a href="#" className="hover:text-white"><span></span></a>
             </div>
           </div>
-          <ul className="flex gap-6 text-slate-600 text-sm">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Portfolio</a></li>
-            <li><a href="#">Contact</a></li>
+          <ul className="flex gap-6 text-slate-400 text-sm">
+            <li><a href="#" className="hover:text-white">Home</a></li>
+            <li><a href="#" className="hover:text-white">About</a></li>
+            <li><a href="#" className="hover:text-white">Services</a></li>
+            <li><a href="#" className="hover:text-white">Portfolio</a></li>
+            <li><a href="#" className="hover:text-white">Contact</a></li>
           </ul>
-          <div className="flex flex-col items-center md:items-end gap-2 text-slate-500 text-xs">
+          <div className="flex flex-col items-center md:items-end gap-2 text-slate-400 text-xs">
             <div>Privacy Policy</div>
             <div>Terms of Service</div>
             <div>Contact Author</div>
