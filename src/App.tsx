@@ -1,32 +1,35 @@
 import { useEffect, useRef } from "react";
 
+
 export default function App() {
   const heroRef = useRef<HTMLDivElement | null>(null);
   const navbarRef = useRef<HTMLDivElement | null>(null);
-  const servicesRef = useRef<HTMLElement | null>(null);
+  const servicesRef = useRef<HTMLDivElement | null>(null);
+
+  
 
   useEffect(() => {
     const navbar = navbarRef.current;
-    const servicesSection = servicesRef.current;
-    if (!navbar || !servicesSection) return;
+    const heroSection = heroRef.current;
+    if (!navbar || !heroSection) return;
 
     const observer = new window.IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          navbar.classList.remove('bg-transparent', 'border-transparent');
-          navbar.classList.add('bg-[#02172a]', 'border-[#02172a]');
-        } else {
           navbar.classList.add('bg-transparent', 'border-transparent');
           navbar.classList.remove('bg-[#02172a]', 'border-[#02172a]');
+        } else {
+          navbar.classList.remove('bg-transparent', 'border-transparent');
+          navbar.classList.add('bg-[#02172a]', 'border-[#02172a]');
         }
       },
       {
-        threshold: 0.2 // Adjust as needed for when you want the effect to trigger
+        threshold: 0.2
       }
     );
-    observer.observe(servicesSection);
+    observer.observe(heroSection);
     return () => observer.disconnect();
-  }, []);
+  }, []);  
 
   return (
     <div className="bg-[#02172a] min-h-screen flex flex-col transition-all snap-y snap-mandatory overflow-y-auto h-screen relative">
@@ -72,6 +75,7 @@ export default function App() {
             <div className="relative px-2 sm:px-16 py-6 sm:p-10 sm:ml-28 mt-3 mb-4 items-center w-full sm:max-w-2/3 z-0">
               <h1 className="text-3xl sm:text-7xl font-thin text-white font-[Poppins] text-center sm:text-left leading-tight sm:leading-[1.1]">Transforming Ideas into Stunning Visual Experiences.</h1>
             </div>
+  
           </div>
           {/* Subheading and Button Section */}
           <div className="flex flex-col sm:flex-row w-full items-center sm:items-start">
@@ -87,27 +91,29 @@ export default function App() {
       </section>
 
       {/* Services Overview */}
-      <section ref={servicesRef} className="w-full bg-[#020e2c] border-b border-slate-200 py-12 h-screen snap-start" id="services">
-        <div className="max-w-7xl mx-auto px-6 h-screen">
-          <h2 className="text-2xl font-semibold text-center mb-10 text-white">Explore Our Core Services That Elevate Your Business to New Heights</h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="flex flex-col items-center text-center gap-4 text-white">
+      <section ref={servicesRef} className="w-full bg-[#020e2c]  py-12 h-screen snap-start" id="services">
+        <div className="mx-auto px-6 py-18 h-screen">
+          <div className="mb-10 pt-16 px-90">
+          <h2 className="text-5xl font-thin font-[Poppins] text-center  mb-10 text-white">Explore our Core Services that Elevate Your Business to New Heights</h2>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8 w-full mt-25 py-8">
+            <div className="flex flex-col items-center text-center gap-8 text-white px-16">
               <div className="bg-blue-100 text-blue-600 rounded-full p-4 text-3xl">🎬</div>
-              <h3 className="font-bold text-lg">Digital Multimedia Production</h3>
-              <p className="text-slate-200">Transform your vision into reality with our digital multimedia production.</p>
-              <a href="#" className="text-blue-400 font-medium hover:underline">Discover →</a>
+              <h3 className="text-2xl font-[Poppins] font-thin">Transform Your Vision into Reality with Our Expert Multimedia Production</h3>
+              <p className="text-slate-200 font-[Lato] font-regular">We create stunning visual content that captivates and engages your audience.</p>
+              <a href="#" className="text-white font-medium hover:underline">Discover →</a>
             </div>
-            <div className="flex flex-col items-center text-center gap-4 text-white">
-              <div className="bg-blue-100 text-blue-600 rounded-full p-4 text-3xl">🔗</div>
-              <h3 className="font-bold text-lg">System Integration</h3>
-              <p className="text-slate-200">Seamless system integration for enhanced operational efficiency and performance.</p>
-              <a href="#" className="text-blue-400 font-medium hover:underline">Discover →</a>
+            <div className="flex flex-col items-center text-center gap-8 text-white px-16">
+              <div className="bg-blue-100 text-blue-600 rounded-full p-4 text-3xl">🎬</div>
+              <h3 className="text-2xl font-[Poppins] font-thin">Seamless System Integration for Enhanced Operational Efficiency and Performance</h3>
+              <p className="text-slate-200">Our solutions ensure that all your systems work together flawlessly.</p>
+              <a href="#" className="text-white font-medium hover:underline">Discover →</a>
             </div>
-            <div className="flex flex-col items-center text-center gap-4 text-white">
-              <div className="bg-blue-100 text-blue-600 rounded-full p-4 text-3xl">💡</div>
-              <h3 className="font-bold text-lg">Digital Solutions</h3>
-              <p className="text-slate-200">Innovative digital solutions tailored to your business needs.</p>
-              <a href="#" className="text-blue-400 font-medium hover:underline">Discover →</a>
+            <div className="flex flex-col items-center text-center gap-8 text-white px-16">
+              <div className="bg-blue-100 text-blue-600 rounded-full p-4 text-3xl">🎬</div>
+              <h3 className="text-2xl font-[Poppins] font-thin">Innovative Digital Solutions Tailored to Meet Your Unique Business Needs</h3>
+              <p className="text-slate-200">From strategy to execution, we provide comprehensive digital services for growth.</p>
+              <a href="#" className="text-white font-medium hover:underline">Discover →</a>
             </div>
           </div>
         </div>
