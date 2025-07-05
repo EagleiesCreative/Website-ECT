@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-
+import Footer from "./components/Footer";
 
 export default function App() {
   const heroRef = useRef<HTMLDivElement | null>(null);
@@ -32,7 +32,7 @@ export default function App() {
   }, []);  
 
   return (
-    <div className="bg-[#02172a] min-h-screen flex flex-col transition-all snap-y snap-mandatory overflow-y-auto h-screen relative">
+    <div className="scroll-smooth bg-[#02172a] min-h-screen flex flex-col transition-all snap-y snap-mandatory overflow-y-auto h-screen relative">
       {/* Grainy SVG Texture Overlay (covers all sections) */}
       <svg className="pointer-events-none fixed inset-0 w-full h-full z-20" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
         <filter id="grain">
@@ -96,21 +96,33 @@ export default function App() {
           <div className="mb-10 pt-16 px-90">
           <h2 className="text-5xl font-thin font-[Poppins] text-center  mb-10 text-white">Explore our Core Services that Elevate Your Business to New Heights</h2>
           </div>
-          <div className="grid md:grid-cols-3 gap-8 w-full mt-25 py-8">
+          <div className="grid md:grid-cols-3 gap-8 w-full mt-20 py-8">
             <div className="flex flex-col items-center text-center gap-8 text-white px-16">
-              <div className="bg-blue-100 text-blue-600 rounded-full p-4 text-3xl">🎬</div>
+              <div className="rounded-full p-4 text-3xl">
+                <svg xmlns="http://www.w3.org/2000/svg" width="39" height="42" viewBox="0 0 39 42" fill="none">
+                  <path d="M20.3473 24.4417L14.6048 30.1837C14.9558 30.7424 15.171 31.2805 15.2503 31.7982C15.3296 32.3155 15.3693 32.8829 15.3693 33.5002C15.3693 35.6589 14.6471 37.4605 13.2028 38.9052C11.7585 40.3495 9.95713 41.0717 7.79879 41.0717C5.64079 41.0717 3.84113 40.3497 2.39979 38.9057C0.95846 37.4614 0.237793 35.66 0.237793 33.5017C0.237793 31.3434 0.958126 29.5415 2.39879 28.0962C3.83913 26.6512 5.63863 25.9287 7.79729 25.9287C8.38396 25.9287 8.96246 26.01 9.53279 26.1727C10.1028 26.3354 10.6965 26.5754 11.3138 26.8927L17.0063 21.2002L11.2138 15.4077C10.6551 15.6584 10.0921 15.8317 9.52479 15.9277C8.95713 16.0237 8.38129 16.0717 7.79729 16.0717C5.63863 16.0717 3.83913 15.3497 2.39879 13.9057C0.958126 12.4614 0.237793 10.66 0.237793 8.50171C0.237793 6.34338 0.95796 4.54154 2.39829 3.09621C3.83863 1.65121 5.63779 0.928711 7.79579 0.928711C9.95413 0.928711 11.756 1.65088 13.2013 3.09521C14.6466 4.53988 15.3693 6.34154 15.3693 8.50021C15.3693 9.11754 15.3316 9.70154 15.2563 10.2522C15.181 10.8032 15.0138 11.3247 14.7548 11.8167L38.1433 35.2047C38.9416 36.003 39.125 36.9072 38.6933 37.9172C38.2613 38.9269 37.4825 39.4317 36.3568 39.4317C36.0358 39.4317 35.7236 39.3692 35.4203 39.2442C35.1173 39.1189 34.8485 38.936 34.6138 38.6957L20.3473 24.4417ZM26.4508 18.6502L22.9473 15.1587L34.6138 3.50471C34.8485 3.26438 35.1173 3.08154 35.4203 2.95621C35.7236 2.83121 36.0358 2.76871 36.3568 2.76871C37.4821 2.76871 38.2461 3.27988 38.6488 4.30221C39.0515 5.32488 38.8663 6.22271 38.0933 6.99571L26.4508 18.6502ZM7.79979 12.9287C9.04113 12.9287 10.0911 12.5004 10.9498 11.6437C11.8085 10.7874 12.2378 9.73871 12.2378 8.49771C12.2378 7.25671 11.8088 6.20888 10.9508 5.35421C10.0925 4.49921 9.04163 4.07171 7.79829 4.07171C6.55496 4.07171 5.50596 4.50004 4.65129 5.35671C3.79663 6.21304 3.36929 7.26171 3.36929 8.50271C3.36929 9.74371 3.79746 10.7915 4.65379 11.6462C5.51013 12.5012 6.55879 12.9287 7.79979 12.9287ZM20.4473 22.3537C20.77 22.3537 21.0428 22.242 21.2658 22.0187C21.4891 21.7954 21.6008 21.5225 21.6008 21.2002C21.6008 20.8779 21.4891 20.605 21.2658 20.3817C21.0428 20.1584 20.77 20.0467 20.4473 20.0467C20.125 20.0467 19.8521 20.1584 19.6288 20.3817C19.4058 20.605 19.2943 20.8779 19.2943 21.2002C19.2943 21.5225 19.4058 21.7954 19.6288 22.0187C19.8521 22.242 20.125 22.3537 20.4473 22.3537ZM7.79979 37.9287C9.04113 37.9287 10.0911 37.5004 10.9498 36.6437C11.8085 35.7874 12.2378 34.7387 12.2378 33.4977C12.2378 32.2567 11.8088 31.2089 10.9508 30.3542C10.0925 29.4992 9.04163 29.0717 7.79829 29.0717C6.55496 29.0717 5.50596 29.5 4.65129 30.3567C3.79663 31.213 3.36929 32.2617 3.36929 33.5027C3.36929 34.7437 3.79746 35.7915 4.65379 36.6462C5.51013 37.5012 6.55879 37.9287 7.79979 37.9287Z" fill="white"/>
+                </svg>
+              </div>
               <h3 className="text-2xl font-[Poppins] font-thin">Transform Your Vision into Reality with Our Expert Multimedia Production</h3>
               <p className="text-slate-200 font-[Lato] font-regular">We create stunning visual content that captivates and engages your audience.</p>
               <a href="#" className="text-white font-medium hover:underline">Discover →</a>
             </div>
             <div className="flex flex-col items-center text-center gap-8 text-white px-16">
-              <div className="bg-blue-100 text-blue-600 rounded-full p-4 text-3xl">🎬</div>
+              <div className=" rounded-full p-4 text-3xl">
+                <svg xmlns="http://www.w3.org/2000/svg" width="38" height="42" viewBox="0 0 38 42" fill="none">
+                  <path d="M11.3602 23.024L15.3717 19.012C15.664 18.72 15.8122 18.3656 15.8162 17.949C15.8198 17.5323 15.6802 17.174 15.3972 16.874C15.0882 16.574 14.724 16.424 14.3047 16.424C13.885 16.424 13.524 16.574 13.2217 16.874L8.27717 21.8185C7.93751 22.1691 7.76767 22.5735 7.76767 23.0315C7.76767 23.4895 7.93751 23.8888 8.27717 24.2295L13.2217 29.174C13.5217 29.474 13.88 29.624 14.2967 29.624C14.7133 29.624 15.0783 29.474 15.3917 29.174C15.6783 28.874 15.8198 28.524 15.8162 28.124C15.8122 27.724 15.6602 27.374 15.3602 27.074L11.3602 23.024ZM26.6902 23.024L22.6287 27.086C22.3363 27.378 22.1882 27.724 22.1842 28.124C22.1805 28.524 22.3202 28.874 22.6032 29.174C22.9122 29.474 23.2763 29.624 23.6957 29.624C24.1153 29.624 24.4763 29.474 24.7787 29.174L29.7732 24.2295C30.1128 23.8858 30.2827 23.485 30.2827 23.027C30.2827 22.569 30.1128 22.1661 29.7732 21.8185L24.8287 16.874C24.5287 16.574 24.1787 16.424 23.7787 16.424C23.3787 16.424 23.022 16.574 22.7087 16.874C22.422 17.174 22.2805 17.5343 22.2842 17.955C22.2882 18.3756 22.4402 18.732 22.7402 19.024L26.6902 23.024ZM4.10767 41.299C3.17101 41.299 2.36901 40.9655 1.70167 40.2985C1.03467 39.6311 0.701172 38.8291 0.701172 37.8925V8.10746C0.701172 7.16746 1.03467 6.3628 1.70167 5.69346C2.36901 5.0238 3.17101 4.68896 4.10767 4.68896H14.0587C14.2733 3.5223 14.8427 2.56396 15.7667 1.81396C16.6903 1.06396 17.7682 0.688965 19.0002 0.688965C20.2322 0.688965 21.31 1.06396 22.2337 1.81396C23.1577 2.56396 23.727 3.5223 23.9417 4.68896H33.8927C34.8327 4.68896 35.6373 5.0238 36.3067 5.69346C36.9763 6.3628 37.3112 7.16746 37.3112 8.10746V37.8925C37.3112 38.8291 36.9763 39.6311 36.3067 40.2985C35.6373 40.9655 34.8327 41.299 33.8927 41.299H4.10767ZM4.10767 37.8925H33.8927V8.10746H4.10767V37.8925ZM19.0002 7.22146C19.4945 7.22146 19.9217 7.04146 20.2817 6.68146C20.6417 6.32146 20.8217 5.8943 20.8217 5.39996C20.8217 4.90563 20.6417 4.47846 20.2817 4.11846C19.9217 3.75846 19.4945 3.57846 19.0002 3.57846C18.5058 3.57846 18.0787 3.75846 17.7187 4.11846C17.3587 4.47846 17.1787 4.90563 17.1787 5.39996C17.1787 5.8943 17.3587 6.32146 17.7187 6.68146C18.0787 7.04146 18.5058 7.22146 19.0002 7.22146Z" fill="white"/>
+                </svg>
+              </div>
               <h3 className="text-2xl font-[Poppins] font-thin">Seamless System Integration for Enhanced Operational Efficiency and Performance</h3>
               <p className="text-slate-200">Our solutions ensure that all your systems work together flawlessly.</p>
               <a href="#" className="text-white font-medium hover:underline">Discover →</a>
             </div>
             <div className="flex flex-col items-center text-center gap-8 text-white px-16">
-              <div className="bg-blue-100 text-blue-600 rounded-full p-4 text-3xl">🎬</div>
+              <div className=" rounded-full p-4 text-3xl">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="41" viewBox="0 0 40 41" fill="none">
+                  <path d="M6.67816 18.562L1.22566 15.474C0.960997 15.3343 0.751831 15.1328 0.598164 14.8695C0.444831 14.6065 0.368164 14.3188 0.368164 14.0065V7.75446C0.368164 7.44213 0.444831 7.15446 0.598164 6.89146C0.751831 6.62813 0.960997 6.42663 1.22566 6.28696L6.67816 3.21096C6.9325 3.06163 7.21166 2.98696 7.51566 2.98696C7.81966 2.98696 8.10416 3.06163 8.36916 3.21096L13.8337 6.28696C14.0903 6.42663 14.2975 6.62813 14.4552 6.89146C14.6125 7.15446 14.6912 7.44213 14.6912 7.75446V14.0065C14.6912 14.3188 14.6125 14.6065 14.4552 14.8695C14.2975 15.1328 14.0903 15.3343 13.8337 15.474L8.36916 18.562C8.11483 18.7113 7.83566 18.786 7.53166 18.786C7.22766 18.786 6.94316 18.7113 6.67816 18.562ZM7.52366 15.239L11.3682 13.035V8.72596L7.52366 6.52146L3.69116 8.72596V13.035L7.52366 15.239ZM29.4782 19.4945V15.674L35.2747 19.0545C35.8137 19.3731 36.2323 19.7883 36.5307 20.3C36.829 20.8116 36.9782 21.366 36.9782 21.963V32.276C36.9782 32.8653 36.829 33.4176 36.5307 33.933C36.2323 34.4486 35.8137 34.862 35.2747 35.173L26.5257 40.2915C25.9843 40.5978 25.41 40.751 24.8027 40.751C24.195 40.751 23.626 40.5978 23.0957 40.2915L14.3467 35.173C13.8077 34.862 13.391 34.4486 13.0967 33.933C12.8023 33.4176 12.6552 32.8653 12.6552 32.276V21.963C12.6552 21.366 12.8023 20.8116 13.0967 20.3C13.391 19.7883 13.8077 19.3731 14.3467 19.0545L20.1552 15.674V19.4945L15.9782 21.9535V32.3115L24.8107 37.4285L33.6552 32.3115V21.9535L29.4782 19.4945ZM26.4782 12.012V22.3565C26.4782 22.8215 26.3157 23.2136 25.9907 23.533C25.6653 23.8523 25.269 24.012 24.8017 24.012C24.3343 24.012 23.9432 23.8523 23.6282 23.533C23.3128 23.2136 23.1552 22.8215 23.1552 22.3565V2.40446C23.1552 1.92346 23.3188 1.5173 23.6462 1.18596C23.9735 0.854629 24.3777 0.688965 24.8587 0.688965H37.8457C38.5087 0.688965 39.0058 0.993463 39.3372 1.60246C39.6688 2.2118 39.644 2.7983 39.2627 3.36196L37.8922 5.38696C37.7015 5.67363 37.6062 5.9938 37.6062 6.34746C37.6062 6.70146 37.7015 7.02763 37.8922 7.32596L39.2627 9.33896C39.644 9.91063 39.6688 10.4991 39.3372 11.1045C39.0058 11.7095 38.5087 12.012 37.8457 12.012H26.4782Z" fill="white"/>
+                </svg>
+              </div>
               <h3 className="text-2xl font-[Poppins] font-thin">Innovative Digital Solutions Tailored to Meet Your Unique Business Needs</h3>
               <p className="text-slate-200">From strategy to execution, we provide comprehensive digital services for growth.</p>
               <a href="#" className="text-white font-medium hover:underline">Discover →</a>
@@ -121,23 +133,41 @@ export default function App() {
 
       {/* Services Detailed */}
       <section className="w-full bg-[#020e2c] py-16 h-screen snap-start">
-        <div className=" mx-auto px-6">
-          <h2 className="text-2xl font-semibold text-white mb-10">Explore Our Comprehensive Service Offerings</h2>
+        <div className=" mx-auto px-24 h-screen mt-20">
+          <h2 className="text-xl text-white mb-5 font-thin font-[Poppins]">Services</h2>
+          <h1 className="text-5xl font-thin font-[Poppins] text-white mb-8 max-w-1/2">Explore Our Comprehensive Service Offerings</h1>
+          <p className="text-white font-[Lato] font-regular max-w-1/2 mb-24">At Eagleies Creative, we provide a range of services tailored to meet your multimedia needs. Our expertise ensures that every project is executed with precision and creativity.</p>
+          {/* Services Detailed | Cards */}
           <div className="grid md:grid-cols-3 gap-8">
             <div className="flex flex-col gap-2">
-              <div className="text-white font-bold text-lg">Multimedia Systems for Engaging Experiences</div>
-              <p className="text-slate-300">We create multimedia systems to deliver engaging and interactive experiences for your audience.</p>
+              <div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+                  <path d="M20 0C8.95431 0 0 8.95431 0 20C0 31.0457 8.95431 40 20 40C31.0457 40 40 31.0457 40 20C40 8.95431 31.0457 0 20 0ZM28.3333 30H11.6667V26.6667H28.3333V30ZM28.3333 23.3333H11.6667V20H28.3333V23.3333ZM28.3333 16H11.6667V13.3333H28.3333V16Z" fill="white"/>
+                </svg>
+              </div>
+              <h1 className="text-white font-thin font-[Poppins] text-4xl my-6">Multimedia Systems for Engaging Experiences</h1>
+              <p className="text-white font-[Lato] font-light">We create multimedia systems to deliver engaging and interactive experiences for your audience.</p>
             </div>
             <div className="flex flex-col gap-2">
-              <div className="text-white font-bold text-lg">Unforgettable Events Tailored to Your Vision</div>
-              <p className="text-slate-300">Our event production team ensures your message is delivered with impact and creativity.</p>
+              <div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+                  <path d="M20 0C8.95431 0 0 8.95431 0 20C0 31.0457 8.95431 40 20 40C31.0457 40 40 31.0457 40 20C40 8.95431 31.0457 0 20 0ZM28.3333 30H11.6667V26.6667H28.3333V30ZM28.3333 23.3333H11.6667V20H28.3333V23.3333ZM28.3333 16H11.6667V13.3333H28.3333V16Z" fill="white"/>
+                </svg>
+              </div>
+              <h1 className="text-white font-thin font-[Poppins] text-4xl my-6">Unforgettable Events Tailored to Your Vision</h1>
+              <p className="text-white font-[Lato] font-light">Our event production team ensures your message is delivered with impact and creativity.</p>
             </div>
             <div className="flex flex-col gap-2">
-              <div className="text-white font-bold text-lg">Creative Content Creation That Resonates</div>
-              <p className="text-slate-300">We craft content that resonates with your audience and strengthens your brand.</p>
+              <div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+                  <path d="M20 0C8.95431 0 0 8.95431 0 20C0 31.0457 8.95431 40 20 40C31.0457 40 40 31.0457 40 20C40 8.95431 31.0457 0 20 0ZM28.3333 30H11.6667V26.6667H28.3333V30ZM28.3333 23.3333H11.6667V20H28.3333V23.3333ZM28.3333 16H11.6667V13.3333H28.3333V16Z" fill="white"/>
+                </svg>
+              </div>
+              <h1 className="text-white font-thin font-[Poppins] text-4xl my-6">Creative Content Creation That Resonates</h1>
+              <p className="text-white font-[Lato] font-light">We craft content that resonates with your audience and strengthens your brand.</p>
             </div>
           </div>
-          <button className="mt-8 px-6 py-2 h-11 rounded-md border border-white text-white bg-transparent font-medium hover:bg-white hover:text-slate-900 transition">Learn More</button>
+          <button className="mt-24 px-7 py-2 h-14 rounded-xl border-2 border-white text-white bg-transparent font-medium hover:bg-white hover:text-[#020e2c] transition">Learn More</button>
         </div>
       </section>
 
@@ -245,36 +275,8 @@ export default function App() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="w-full bg-[#020e2c] border-t border-slate-700 py-8 mt-auto">
-        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
-          <div className="flex flex-col items-center md:items-start gap-2">
-            <div className="font-bold text-xl text-white">Logo</div>
-            <div className="text-slate-400 text-sm">© 2025 Eagles Creative. All rights reserved.</div>
-            <div className="flex gap-2 text-slate-400 text-xl">
-              <a href="#" className="hover:text-white"><span></span></a> {/* Assuming these are icon placeholders */}
-              <a href="#" className="hover:text-white"><span></span></a>
-              <a href="#" className="hover:text-white"><span></span></a>
-              <a href="#" className="hover:text-white"><span></span></a>
-            </div>
-          </div>
-          <ul className="flex gap-6 text-slate-400 text-sm">
-            <li><a href="#" className="hover:text-white">Home</a></li>
-            <li><a href="#" className="hover:text-white">About</a></li>
-            <li><a href="#" className="hover:text-white">Services</a></li>
-            <li><a href="#" className="hover:text-white">Portfolio</a></li>
-            <li><a href="#" className="hover:text-white">Contact</a></li>
-          </ul>
-          <div className="flex flex-col items-center md:items-end gap-2 text-slate-400 text-xs">
-            <div>Privacy Policy</div>
-            <div>Terms of Service</div>
-            <div>Contact Author</div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
 
-      {/* Tailwind Purge Fix: Ensure these classes are included in the CSS bundle */}
-      <div className="hidden bg-blue-600 border-blue-600"></div>
     </div>
   );
 }
