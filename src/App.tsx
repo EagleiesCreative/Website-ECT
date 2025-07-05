@@ -1,5 +1,7 @@
 import { useEffect, useRef } from "react";
 import Footer from "./components/Footer";
+import FadeContent from "./components/FadeContent";
+import Noise from "./Animations/Noise";
 
 export default function App() {
   const heroRef = useRef<HTMLDivElement | null>(null);
@@ -92,6 +94,7 @@ export default function App() {
 
       {/* Services Overview */}
       <section ref={servicesRef} className="w-full bg-[#020e2c]  py-12 h-screen snap-start" id="services">
+        <FadeContent blur={true} duration={1500} easing="ease-out" initialOpacity={0}>
         <div className="mx-auto px-6 py-18 h-screen">
           <div className="mb-10 pt-16 px-90">
           <h2 className="text-5xl font-thin font-[Poppins] text-center  mb-10 text-white">Explore our Core Services that Elevate Your Business to New Heights</h2>
@@ -129,6 +132,7 @@ export default function App() {
             </div>
           </div>
         </div>
+        </FadeContent>
       </section>
 
       {/* Services Detailed */}
@@ -173,9 +177,11 @@ export default function App() {
 
       {/* Portfolio Section */}
       <section className="w-full bg-[#020e2c] py-16 h-screen snap-start" id="portfolio">
-        <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-2xl font-semibold text-center mb-10 text-white">Our Recent Projects</h2>
-          <div className="grid md:grid-cols-2 gap-8">
+        <div className="max-w-7xl mx-auto px-6 h-screen mt-20">
+          <h2 className="text-lg text-white mb-7 font-thin font-[Poppins] text-center">Portfolio</h2>
+          <h1 className="text-5xl font-thin font-[Poppins] text-center mb-7 text-white">Our Recent Projects</h1>
+          <p className="text-white font-[Lato] text-lg font-light text-center mb-10">Explore our innovative solutions and creative endeavors.</p>
+          <div className="grid md:grid-cols-1 gap-8">
             <div className="bg-slate-100 rounded-xl overflow-hidden">
               <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=800&q=80" alt="Project 1" className="w-full h-64 object-cover" />
               <div className="p-6">
@@ -189,7 +195,7 @@ export default function App() {
                 <button className="mt-4 px-6 py-2 h-11 rounded-md bg-transparent text-blue-600 font-medium hover:bg-blue-50 transition">View</button>
               </div>
             </div>
-            <div className="bg-slate-100 rounded-xl overflow-hidden">
+            <div className="bg-slate-100 rounded-xl overflow-visible">
               <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=800&q=80" alt="Project 2" className="w-full h-64 object-cover" />
               <div className="p-6">
                 <div className="font-bold text-lg mb-2">Event Production</div>
