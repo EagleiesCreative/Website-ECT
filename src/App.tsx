@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import Footer from "./components/Footer";
 import FadeContent from "./components/FadeContent";
-import Noise from "./Animations/Noise";
+
 
 export default function App() {
   const heroRef = useRef<HTMLDivElement | null>(null);
@@ -65,11 +65,11 @@ export default function App() {
       <section ref={heroRef} className="w-full bg-[#020e2c] h-screen transition-all snap-start flex flex-col justify-center items-center relative px-4 sm:px-6" id="home">
         {/* Radial Glow Section */}
         {/* Radial gradient backgrounds - hide or resize on mobile */}
-        <div className="circlePosition bg-[#104370] rounded-full absolute left-[10vw] top-1/2 -translate-y-1/2 z-0 w-[60vw] max-w-[700px] h-[120px] sm:h-[300px] blur-[60px] sm:blur-[90px] pointer-events-none" />
+        <div className="circlePosition bg-[#104370] rounded-full absolute left-[10vw] top-1/3 -translate-y-1/2 z-0 w-[60vw] max-w-[700px] h-[120px] sm:h-[300px] blur-[60px] sm:blur-[90px] pointer-events-none" />
         <div className="circlePosition bg-[#030b1a] rounded-full absolute left-0 top-[20px] -translate-y-1/2 z-0 w-[80vw] max-w-[800px] h-[100px] sm:h-[300px] blur-[60px] sm:blur-[90px] pointer-events-none" />
         <div className="circlePosition bg-[#104370] rounded-full absolute right-[-20vw] top-[60vh] -translate-y-1/2 z-0 w-[80vw] max-w-[800px] h-[150px] sm:h-[400px] blur-[60px] sm:blur-[90px] pointer-events-none" />
         <div className="circlePosition bg-[#0d3d52] rounded-full absolute right-[-40vw] top-[25vh] -translate-y-1/2 z-0 w-[80vw] max-w-[800px] h-[100px] sm:h-[300px] blur-[60px] sm:blur-[90px] pointer-events-none" />
-        <div className="circlePosition bg-[#0d3d52] rounded-full absolute left-[10vw] bottom-[-10vh] -translate-y-1/2 z-0 w-[50vw] max-w-[500px] h-[80px] sm:h-[200px] blur-[60px] sm:blur-[90px] pointer-events-none" />
+        <div className="circlePosition bg-[#104370] rounded-full absolute left-[10vw] bottom-[-40vh] -translate-y-1/2 z-0 w-[50vw] max-w-[500px] h-[400px] sm:h-[300px] blur-[60px] sm:blur-[90px] rotate-45 pointer-events-none" />
 
         <div className="flex-2 flex flex-col items-center gap-4 sm:gap-0 mt-10 sm:mt-26 py-20 sm:py-36 h-full relative z-10 w-full">
           {/* Heading Section H1 */}
@@ -94,6 +94,7 @@ export default function App() {
 
       {/* Services Overview */}
       <section ref={servicesRef} className="w-full bg-[#020e2c]  py-12 h-screen snap-start" id="services">
+       
         <FadeContent blur={true} duration={1500} easing="ease-out" initialOpacity={0}>
         <div className="mx-auto px-6 py-18 h-screen">
           <div className="mb-10 pt-16 px-90">
@@ -137,6 +138,7 @@ export default function App() {
 
       {/* Services Detailed */}
       <section className="w-full bg-[#020e2c] py-16 h-screen snap-start">
+        
         <div className=" mx-auto px-24 h-screen mt-20">
           <h2 className="text-xl text-white mb-5 font-thin font-[Poppins]">Services</h2>
           <h1 className="text-5xl font-thin font-[Poppins] text-white mb-8 max-w-1/2">Explore Our Comprehensive Service Offerings</h1>
