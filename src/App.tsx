@@ -1,12 +1,11 @@
 import { useEffect, useRef } from "react";
 import Footer from "./pages/Footer";
-import FadeContent from "./components/FadeContent";
+import Services from "./pages/Services";
 
 
 export default function App() {
   const heroRef = useRef<HTMLDivElement | null>(null);
   const navbarRef = useRef<HTMLDivElement | null>(null);
-  const servicesRef = useRef<HTMLDivElement | null>(null);
 
   
 
@@ -91,6 +90,8 @@ export default function App() {
           </div>
         </div>
       </section>
+
+      <Services />
 
       {/* Portfolio Section */}
       <section className="w-full bg-[#020e2c] py-16 h-screen snap-start" id="portfolio">
