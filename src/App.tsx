@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import Footer from "./pages/Footer";
 import Services from "./pages/Services";
+import TiltedCard from "./components/TiltedCard";
 
 
 export default function App() {
@@ -99,6 +100,90 @@ export default function App() {
           <h2 className="text-lg text-white mb-7 font-thin font-[Poppins] text-center">Portfolio</h2>
           <h1 className="text-5xl font-thin font-[Poppins] text-center mb-7 text-white">Our Recent Projects</h1>
           <p className="text-white font-[Lato] text-lg font-light text-center mb-10">Explore our innovative solutions and creative endeavors.</p>
+
+          {/* Tilted Cards Section */}
+          <div className="grid grid-cols-1 gap-3">
+            {/* Example Tilted Cards */}
+
+<TiltedCard
+  imageSrc="https://i.scdn.co/image/ab67616d0000b273d9985092cd88bffd97653b58"
+  altText="Web Development and Design"
+  captionText="Web Development and Design"
+  containerHeight="400px"
+  containerWidth="70%"
+  imageHeight="400px"
+  imageWidth="70%"
+  rotateAmplitude={12}
+  scaleOnHover={1.2}
+  showMobileWarning={false}
+  showTooltip={true}
+  displayOverlayContent={true}
+  overlayContent={
+    <p className="ml-4 mt-4 p-2 bg-gray-800 opacity-80 text-white rounded-lg">
+      Web Development
+    </p>
+  }
+/>
+
+<TiltedCard
+  imageSrc="https://i.scdn.co/image/ab67616d0000b273d9985092cd88bffd97653b58"
+  altText="Web Development and Design"
+  captionText="Web Development and Design"
+  containerHeight="400px"
+  containerWidth="400px"
+  imageHeight="400px"
+  imageWidth="400px"
+  rotateAmplitude={12}
+  scaleOnHover={1.2}
+  showMobileWarning={false}
+  showTooltip={true}
+  displayOverlayContent={true}
+  overlayContent={
+    <p className="ml-4 mt-4 p-2 bg-gray-800 opacity-80 text-white rounded-lg">
+      Photography
+    </p>
+  }
+/>
+<TiltedCard
+  imageSrc="https://i.scdn.co/image/ab67616d0000b273d9985092cd88bffd97653b58"
+  altText="Web Development and Design"
+  captionText="Web Development and Design"
+  containerHeight="400px"
+  containerWidth="400px"
+  imageHeight="400px"
+  imageWidth="400px"
+  rotateAmplitude={12}
+  scaleOnHover={1.2}
+  showMobileWarning={false}
+  showTooltip={true}
+  displayOverlayContent={true}
+  overlayContent={
+    <p className="ml-4 mt-4 p-2 bg-gray-800 opacity-80 text-white rounded-lg">
+      Videography
+    </p>
+  }
+/>
+<TiltedCard
+  imageSrc="https://i.scdn.co/image/ab67616d0000b273d9985092cd88bffd97653b58"
+  altText="Web Development and Design"
+  captionText="Web Development and Design"
+  containerHeight="400px"
+  containerWidth="400px"
+  imageHeight="400px"
+  imageWidth="400px"
+  rotateAmplitude={12}
+  scaleOnHover={1.2}
+  showMobileWarning={false}
+  showTooltip={true}
+  displayOverlayContent={true}
+  overlayContent={
+    <p className="ml-4 mt-4 p-2 bg-gray-800 opacity-80 text-white rounded-lg">
+      Live Broadcast
+    </p>
+  }
+/>
+</div>
+  
           <div className="grid md:grid-cols-1 gap-8">
             <div className="bg-slate-100 rounded-xl overflow-hidden">
               <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=800&q=80" alt="Project 1" className="w-full h-64 object-cover" />
@@ -170,7 +255,7 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12">
           <div>
             <h2 className="text-2xl font-semibold mb-4 text-white">Get in Touch</h2>
-            <p className="mb-6 text-slate-300">We'd love to hear from you! Reach out for inquiries or collaborations.</p>
+            <p className="mb-6 text-slate-300">We can't wait to connect with you! Whether you have questions, ideas, or want to collaborate, our team is here and excited to hear from you.</p>
             <ul className="space-y-2 text-slate-300">
               <li><span className="font-medium">Email:</span> info@eaglescreative.com</li>
               <li><span className="font-medium">Phone:</span> (021) 1234 5678</li>
