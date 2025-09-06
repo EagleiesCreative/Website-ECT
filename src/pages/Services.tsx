@@ -5,7 +5,7 @@ const Services = () => {
     <>
       {/* Services Overview */}
       <section className="w-full bg-[#020e2c] py-12 h-screen snap-start" id="services">
-        <FadeContent blur={true} duration={1500} easing="ease-out" initialOpacity={0}>
+        <FadeContent blur={true} duration={500} easing="ease-out" initialOpacity={0}>
           <div className="mx-auto px-6 py-18 h-screen">
             <div className="mb-10 pt-16 px-6">
               <h2 className="text-5xl font-thin font-[Poppins] text-center mb-10 text-white">Explore our Core Services that Elevate Your Business to New Heights</h2>

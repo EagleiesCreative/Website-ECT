@@ -70,6 +70,7 @@ export default function App() {
         <div className="circlePosition bg-[#104370] rounded-full absolute right-[-20vw] top-[60vh] -translate-y-1/2 z-0 w-[80vw] max-w-[800px] h-[150px] sm:h-[400px] blur-[60px] sm:blur-[90px] pointer-events-none" />
         <div className="circlePosition bg-[#0d3d52] rounded-full absolute right-[-40vw] top-[25vh] -translate-y-1/2 z-0 w-[80vw] max-w-[800px] h-[100px] sm:h-[300px] blur-[60px] sm:blur-[90px] pointer-events-none" />
         <div className="circlePosition bg-[#104370] rounded-full absolute left-[10vw] bottom-[-40vh] -translate-y-1/2 z-0 w-[50vw] max-w-[500px] h-[400px] sm:h-[300px] blur-[60px] sm:blur-[90px] rotate-45 pointer-events-none" />
+        <div className="circlePosition bg-[#104370] rounded-full absolute right-[10vw] bottom-[-100vh] -translate-y-1/2 z-0 w-[70vw] max-w-[500px] h-[400px] sm:h-[300px] blur-[60px] sm:blur-[90px] rotate-45 pointer-events-none" />
 
         <div className="flex-2 flex flex-col items-center gap-4 sm:gap-0 mt-10 sm:mt-26 py-20 sm:py-36 h-full relative z-10 w-full">
           {/* Heading Section H1 */}
